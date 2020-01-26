@@ -26,7 +26,7 @@ android {
 
     productFlavors {
         envDev {
-            buildConfigField("String", "API_URL", '"https://www.reddit.com/api/"')
+            buildConfigField("String", "API_URL", '"https://www.reddit.com/"')
         }
     }
 
