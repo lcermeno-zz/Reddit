@@ -1,7 +1,8 @@
-package com.qiubo.deviget
+package com.qiubo.deviget.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.qiubo.deviget.R
 
 class MainActivity : AppCompatActivity() {
 

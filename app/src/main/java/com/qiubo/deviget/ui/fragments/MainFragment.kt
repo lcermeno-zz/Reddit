@@ -1,4 +1,4 @@
-package com.qiubo.deviget
+package com.qiubo.deviget.ui.fragments
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.qiubo.deviget.R
 
 /**
  * A simple [Fragment] subclass.

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.qiubo.deviget.MainFragment"
+        android:name="com.qiubo.deviget.ui.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
 </navigation>
