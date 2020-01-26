@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -27,24 +28,30 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.compactVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.legacySupporVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ext.coreKtxVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerViewVersion"
+    implementation "androidx.multidex:multidex:$rootProject.ext.multidexVersion"
 
     // Navigation
-    implementation 'androidx.navigation:navigation-fragment:2.2.0'
-    implementation 'androidx.navigation:navigation-ui:2.2.0'
+    implementation "androidx.navigation:navigation-fragment:$rootProject.ext.jetpackVersion"
+    implementation "androidx.navigation:navigation-ui:$rootProject.ext.jetpackVersion"
 
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.jetpackVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.ext.jetpackVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.ext.jetpackVersion"
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.loggingInterceptorVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
