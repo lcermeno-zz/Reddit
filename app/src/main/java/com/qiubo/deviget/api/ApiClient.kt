@@ -20,4 +20,8 @@ object ApiClient {
             .client(builderClient.build())
             .build()
     }
+
+    private fun <T> getService(serviceClass: Class<T>): T = public.create(serviceClass)
+
+    fun getRedditService() = getService(IRedditService::class.java)
 }

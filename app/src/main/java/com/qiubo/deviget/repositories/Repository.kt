@@ -3,7 +3,7 @@ package com.qiubo.deviget.repositories
 import android.util.Log
 import com.google.gson.Gson
 import com.qiubo.deviget.api.ResultWrapper
-import com.qiubo.deviget.responses.ErrorResponse
+import com.qiubo.deviget.api.ErrorResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
