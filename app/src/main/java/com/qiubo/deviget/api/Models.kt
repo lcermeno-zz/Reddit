@@ -16,6 +16,8 @@ data class RedditData(val children: List<RedditChild>, val after: String)
 data class RedditChild(val data: RedditChildData)
 
 data class RedditChildData(
+    @SerializedName("id")
+    val id: String,
     @SerializedName("author")
     val author: String,
     @SerializedName("title")
