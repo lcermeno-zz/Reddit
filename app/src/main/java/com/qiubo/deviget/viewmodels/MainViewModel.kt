@@ -1,6 +1,7 @@
 package com.qiubo.deviget.viewmodels
 
 import android.util.Log
+import android.util.SparseArray
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ import com.qiubo.deviget.viewData.toViewData
 import kotlinx.coroutines.launch
 import org.ocpsoft.prettytime.PrettyTime
 import java.util.*
+import kotlin.collections.HashMap
 
 class MainViewModel : ViewModel() {
 
@@ -23,6 +25,7 @@ class MainViewModel : ViewModel() {
     private val _morePosts = MutableLiveData<List<PostViewData>>()
     private val _error = MutableLiveData<Unit>()
     private var _after: String? = null
+    private val _seenPosts = HashMap<String, Boolean>()
 
     val progress: LiveData<Boolean>
         get() = _progress
@@ -44,8 +47,12 @@ class MainViewModel : ViewModel() {
             true -> {
                 _after = event.getTopResponse?.data?.after
                 event.getTopResponse?.data?.children?.let {
-                    val items = it.map { it.toViewData(PrettyTime(Locale.getDefault())) }
-                    if(request != null)
+                    val items = it.map {
+                        it.toViewData(PrettyTime(Locale.getDefault())).apply {
+                            seen = _seenPosts.containsKey(id)
+                        }
+                    }
+                    if (request != null)
                         _morePosts.postValue(items)
                     else
                         _posts.postValue(items)
@@ -70,6 +77,10 @@ class MainViewModel : ViewModel() {
     fun dismissAll() {
         _after = null
         _posts.postValue(mutableListOf())
+    }
+
+    fun markSeenPost(postViewData: PostViewData) {
+        _seenPosts[postViewData.id] = true
     }
 
 }

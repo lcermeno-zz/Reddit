@@ -66,6 +66,13 @@ class PostAdapter(private val listener: OnClickListener) : RecyclerView.Adapter<
         }
     }
 
+    fun update(postViewData: PostViewData) {
+        val index = _items.indexOf(postViewData)
+        if (index != -1) {
+            notifyItemChanged(index)
+        }
+    }
+
     class PostListDiffCallback(private val oldList: List<PostViewData>, private val newList: List<PostViewData>): DiffUtil.Callback() {
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = oldList[oldItemPosition].id == newList[newItemPosition].id

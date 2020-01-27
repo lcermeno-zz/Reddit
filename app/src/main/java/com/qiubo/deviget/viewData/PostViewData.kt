@@ -23,7 +23,7 @@ data class PostViewData(
     val date: String,
     val thumbnailUrl: String,
     val commentQty: String,
-    val seen: Boolean = false
+    var seen: Boolean = false
 ) : Parcelable
 
 fun RedditChild.toViewData(prettyTime: PrettyTime) = PostViewData(

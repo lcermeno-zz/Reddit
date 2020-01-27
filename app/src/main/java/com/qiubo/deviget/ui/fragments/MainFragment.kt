@@ -78,5 +78,7 @@ class MainFragment : Fragment(), PostAdapter.OnClickListener {
     override fun showPost(postViewData: PostViewData) {
         val action = MainFragmentDirections.actionMainFragmentToDetailFragment(postViewData)
         _navController.navigate(action)
+        _adapter.update(postViewData.apply { seen = true })
+        _viewModel.markSeenPost(postViewData)
     }
 }
