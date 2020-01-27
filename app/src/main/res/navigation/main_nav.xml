@@ -9,5 +9,22 @@
         android:id="@+id/mainFragment"
         android:name="com.qiubo.deviget.ui.fragments.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/zoom_back_in"
+            app:exitAnim="@anim/zoom_back_out"
+            app:popEnterAnim="@anim/zoom_forward_in"
+            app:popExitAnim="@anim/zoom_forward_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.qiubo.deviget.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="item"
+            app:argType="com.qiubo.deviget.viewData.PostViewData" />
+    </fragment>
 </navigation>
