@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="post"
+            type="com.qiubo.deviget.viewData.PostViewData" />
+
+        <variable
+            name="listener"
+            type="com.qiubo.deviget.ui.adapters.PostAdapter.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/post_height"
+        android:padding="@dimen/standard_margin">
+
+        <ImageView
+            android:id="@+id/readStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_status"
+            android:visibility="@{post.seen ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{post.author}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/createdAt"
+            app:layout_constraintStart_toEndOf="@id/readStatus"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Walter White" />
+
+        <TextView
+            android:id="@+id/createdAt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_margin"
+            android:text="@{post.date}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="8 hrs ago" />
+
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_width="@dimen/post_image_size"
+            android:layout_height="@dimen/post_image_size"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{post.thumbnailUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/quarter_margin"
+            android:layout_marginEnd="@dimen/quarter_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@{post.title}"
+            app:layout_constraintBottom_toBottomOf="@id/postImage"
+            app:layout_constraintEnd_toStartOf="@id/postArrow"
+            app:layout_constraintStart_toEndOf="@id/postImage"
+            app:layout_constraintTop_toTopOf="@id/postImage"
+            tools:text="8 hrs ago" />
+
+        <ImageView
+            android:id="@+id/postArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_chevron_right_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/postImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/postImage" />
+
+
+        <ImageView
+            android:id="@+id/dismissIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> listener.onDismissPost(post)}"
+            android:src="@drawable/ic_cancel_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/dismissText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> listener.onDismissPost(post)}"
+            android:text="@string/dismiss_post"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dismissIcon"
+            app:layout_constraintTop_toTopOf="@id/dismissIcon" />
+
+        <TextView
+            android:id="@+id/commentsQty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_margin"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:text="@{post.commentQty}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dismissText"
+            tools:text="2256 comments" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
