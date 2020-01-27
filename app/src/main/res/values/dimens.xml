@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="post_height">200dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="half_margin">8dp</dimen>
+    <dimen name="quarter_margin">4dp</dimen>
+    <dimen name="post_image_size">90dp</dimen>
+</resources>
