@@ -3,4 +3,5 @@
 
     <string name="dismiss_post">Dismiss Post</string>
     <string name="generic_error">Something went wrong, try again</string>
+    <string name="dismiss_all">Dismiss All</string>
 </resources>

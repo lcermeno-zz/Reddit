@@ -67,4 +67,9 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun dismissAll() {
+        _after = null
+        _posts.postValue(mutableListOf())
+    }
+
 }
