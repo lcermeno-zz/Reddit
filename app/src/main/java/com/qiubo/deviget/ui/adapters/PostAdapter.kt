@@ -15,6 +15,8 @@ class PostAdapter(private val listener: OnClickListener) : RecyclerView.Adapter<
 
     interface OnClickListener {
         fun onDismissPost(postViewData: PostViewData)
+
+        fun showPost(postViewData: PostViewData)
     }
 
     private val _items: MutableList<PostViewData> = mutableListOf()

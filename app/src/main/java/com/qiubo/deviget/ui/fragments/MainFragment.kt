@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +28,7 @@ class MainFragment : Fragment(), PostAdapter.OnClickListener {
 
     private lateinit var _viewModel: MainViewModel
     private lateinit var _binding: FragmentMainBinding
+    private lateinit var _navController: NavController
     private val _adapter by lazy { PostAdapter(this) }
 
 
@@ -43,6 +46,7 @@ class MainFragment : Fragment(), PostAdapter.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _navController = Navigation.findNavController(view)
         _binding.mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = _adapter
@@ -69,5 +73,10 @@ class MainFragment : Fragment(), PostAdapter.OnClickListener {
 
     override fun onDismissPost(postViewData: PostViewData) {
         _adapter.remove(postViewData)
+    }
+
+    override fun showPost(postViewData: PostViewData) {
+        val action = MainFragmentDirections.actionMainFragmentToDetailFragment(postViewData)
+        _navController.navigate(action)
     }
 }

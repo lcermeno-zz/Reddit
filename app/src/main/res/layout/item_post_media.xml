@@ -19,6 +19,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/post_height"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> listener.showPost(post)}"
         android:padding="@dimen/standard_margin">
 
         <ImageView
@@ -107,10 +110,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/half_margin"
-            android:ellipsize="end"
-            android:maxLines="1"
             android:clickable="true"
+            android:ellipsize="end"
             android:focusable="true"
+            android:maxLines="1"
             android:onClick="@{() -> listener.onDismissPost(post)}"
             android:text="@string/dismiss_post"
             app:layout_constraintBottom_toBottomOf="parent"
