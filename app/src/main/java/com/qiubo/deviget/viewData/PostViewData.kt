@@ -1,6 +1,7 @@
 package com.qiubo.deviget.viewData
 
 import android.graphics.drawable.Drawable
+import android.os.Parcelable
 import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -10,9 +11,11 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.qiubo.deviget.api.RedditChild
+import kotlinx.android.parcel.Parcelize
 import org.ocpsoft.prettytime.PrettyTime
 import java.util.*
 
+@Parcelize
 data class PostViewData(
     val id: String,
     val title: String,
@@ -21,7 +24,7 @@ data class PostViewData(
     val thumbnailUrl: String,
     val commentQty: String,
     val seen: Boolean = false
-)
+) : Parcelable
 
 fun RedditChild.toViewData(prettyTime: PrettyTime) = PostViewData(
     data.id,
