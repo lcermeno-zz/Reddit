@@ -5,4 +5,5 @@
     <dimen name="half_margin">8dp</dimen>
     <dimen name="quarter_margin">4dp</dimen>
     <dimen name="post_image_size">90dp</dimen>
+    <dimen name="post_image_large_size">150dp</dimen>
 </resources>
